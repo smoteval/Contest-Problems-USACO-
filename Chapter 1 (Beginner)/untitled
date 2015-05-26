@@ -1,0 +1,44 @@
+/*
+ID: smoteva1
+LANG: C++
+TASK: friday
+*/
+#include <iostream>
+#include <map>
+#include <fstream>
+using namespace std;
+
+int main() {
+	int N;
+	string neck;
+	ifstream my;
+	my.open("beads.in");
+	my >> N;
+	my >> neck;
+	my.close();
+	int max = 0;
+	for(int i=0;i<neck.length();i++) {
+		int tempmax1 = 0;
+		int tempmax2 = 0;
+		char a = neck[i];
+		char b = neck[((i-1)%neck.length() )];
+		int j = i;
+        while(neck[j] == a || neck[j] == 'w') {
+        	tempmax1++;
+        	j = (j+1)%neck.length();
+        }
+        j = ((i-1)%neck.length() )
+        while(neck[j] == b || neck[j] == 'w')  {
+        	tempmax2++;
+            j = (j-1)%neck.length();
+        }
+        tempmax1 = tempmax1+tempmax2;
+        if (tempmax1 > max) {
+        	max = tempmax1;
+        }
+	}
+	ofstream myfile;
+	myfile,open("beads.out");
+	myfile << max << endl;
+	myfile.close;
+}
